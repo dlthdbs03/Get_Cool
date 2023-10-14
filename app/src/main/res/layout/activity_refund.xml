@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Refund">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|left"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/menu_main" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/toolbar1">
+        <include  layout="@layout/q_toolbar"/>
+
+        <android.widget.Button
+            android:id="@+id/btn1"
+            android:layout_below="@+id/toolbar1"
+            android:textColor="@color/black"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/btn_style"
+            android:text="이용문의"
+            android:textStyle="bold"
+            />
+        <android.widget.Button
+            android:id="@+id/btn2"
+            android:layout_toRightOf="@+id/btn1"
+            android:layout_alignTop="@+id/btn1"
+            android:textColor="@color/black"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/btn_pressed"
+            android:text="환불"
+            android:textStyle="bold"
+            />
+        <android.widget.Button
+            android:id="@+id/btn3"
+            android:layout_below="@+id/btn1"
+            android:textColor="@color/black"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_style"
+            android:text="계정"
+            android:textStyle="bold"
+            />
+
+        <android.widget.Button
+            android:id="@+id/btn4"
+            android:layout_toRightOf="@+id/btn3"
+            android:layout_alignTop="@+id/btn3"
+            android:textColor="@color/black"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/btn_style"
+            android:text="기타"
+            android:textStyle="bold"
+            />
+        <android.widget.Button
+            android:id="@+id/btn5"
+            android:layout_below="@+id/text2"
+            android:textColor="@color/black"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="180dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/btn_style"
+            android:text="목록"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/text1"
+            android:layout_below="@+id/btn3"
+            android:background="@drawable/text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="\nQ. 환불은 가능한가요?\n\nA. 빠른 시간에 처리해야 되는 재고물품\n 특성상 구매 후 취소가 어렵습니다.\n"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:background="@drawable/text_style"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text1"
+            android:gravity="center"
+            android:text="\nQ. 주문 접수가 취소되었습니다.\n결제가 된 건가요?\n\nA. 주문 접수와 동시에 결제되는 것이므로\n 접수가 취소됐을 경우, 결제는 진행되지 않습니다. \n"
+            android:textSize="19dp"
+            android:layout_marginTop="20dp"/>
+    </RelativeLayout>
+
+
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

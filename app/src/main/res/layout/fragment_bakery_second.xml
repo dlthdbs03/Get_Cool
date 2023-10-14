@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BakerySecondFragment">
+
+    <!-- 베이커리 가게 추천 상세 페이지, 두번째 화면 xml 파일  -->
+
+
+
+    <!-- 가게 이름 들어갈 곳  -->
+    <EditText
+        android:id="@+id/editTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textSize="30sp"
+        android:text="EditText" />
+
+    <!-- 가게 상세 설명 들어갈 곳  -->
+    <EditText
+        android:id="@+id/editContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="65dp"
+        android:layout_marginRight="250dp"
+        android:text="EditText"
+
+        android:minWidth="48dp"
+        android:minHeight="48dp" />
+
+
+    <!-- 가게 대표 이미지  -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="150dp"
+        android:paddingTop="0dp"
+        android:src="@drawable/bakery_img1" />
+
+</FrameLayout>

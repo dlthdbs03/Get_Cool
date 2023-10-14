@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".QMain">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|left"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/menu_main" />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/toolbar1">
+        <include  layout="@layout/toolbar"/>
+
+
+        <android.widget.Button
+            android:id="@+id/btn1"
+            android:layout_below="@+id/toolbar1"
+            android:textColor="@color/black"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/btn_style"
+            android:text="이용문의"
+            android:textStyle="bold"
+            />
+        <android.widget.Button
+            android:id="@+id/btn2"
+            android:layout_toRightOf="@+id/btn1"
+            android:layout_alignTop="@+id/btn1"
+            android:textColor="@color/black"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/btn_style"
+            android:text="환불"
+            android:textStyle="bold"
+            />
+        <android.widget.Button
+            android:id="@+id/btn3"
+            android:layout_below="@+id/btn1"
+            android:textColor="@color/black"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/btn_style"
+            android:text="계정"
+            android:textStyle="bold"
+            />
+
+        <android.widget.Button
+            android:id="@+id/btn4"
+            android:layout_toRightOf="@+id/btn3"
+            android:layout_alignTop="@+id/btn3"
+            android:textColor="@color/black"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/btn_style"
+            android:text="기타"
+            android:textStyle="bold"
+            />
+
+        <include
+            layout="@layout/bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"/>
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
