@@ -1,19 +1,25 @@
 package com.example.get_cool;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.Manifest;
+import android.widget.TextView;
 
 import com.skt.Tmap.TMapGpsManager;
 import com.skt.Tmap.TMapMarkerItem;
@@ -22,13 +28,24 @@ import com.skt.Tmap.TMapView;
 import java.util.ArrayList;
 
 
-public class MainActivity extends AppCompatActivity implements TMapGpsManager.onLocationChangedCallback {
+public class MapActivity extends AppCompatActivity implements TMapGpsManager.onLocationChangedCallback {
+    private static final String TAG = "Main_Activity";
     private static final int YOUR_REQUEST_CODE = 1;
     private TMapView tMapView;
     private LinearLayout linearLayoutTmap;
     private TMapGpsManager tmapgps = null;
     private View view;
     private boolean TrackingMode = true;
+
+    private DrawerLayout drawerLayout; //메뉴
+    private Toolbar toolbar; //상단바
+    private ImageView ivMenu; //좌측메뉴
+    private ImageView ivSearch; //검색
+    //하단바
+    private TextView bottom_q;
+    private ImageView bottom_map;
+    private TextView bottom_my;
+
     Bread bread;
     Grocery grocery;
     Side side;
@@ -58,7 +75,14 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_map);
+
+        // 검색
+        ivSearch = findViewById(R.id.iv_search);
+        //메뉴
+        ivMenu=findViewById(R.id.iv_menu);
+
+        toolbar=findViewById(R.id.toolbar);
 
         //LinearLayout linearLayoutmenu = findViewById(R.id.menu);
         bread_button = findViewById(R.id.bread);
@@ -93,7 +117,12 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
         tMapView.setMapType(TMapView.MAPTYPE_STANDARD);
         tMapView.setLanguage(TMapView.LANGUAGE_KOREAN);
 
-        tmapgps = new TMapGpsManager(MainActivity.this);
+        // 위치 권한을 체크하고 요청하는 코드
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION }, YOUR_REQUEST_CODE);
+        }
+
+        tmapgps = new TMapGpsManager(MapActivity.this);
         tmapgps.setMinTime(1000);
         tmapgps.setMinDistance(5);
         tmapgps.setProvider(tmapgps.NETWORK_PROVIDER);
@@ -101,11 +130,29 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
 
         tMapView.setSightVisible(true);
 
-        // 위치 권한을 체크하고 요청하는 코드
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION }, YOUR_REQUEST_CODE);
-        }
+        //하단바
+        bottom_q=findViewById(R.id.bt_q);
+        bottom_map=findViewById(R.id.bt_map);
+        bottom_my=findViewById(R.id.bt_my);
 
+        //문의 작성 페이지
+        /*ivSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AskCreatePage.class);
+                startActivity(intent);
+            }
+        });
+
+        //메뉴
+        ivMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: 클릭됨");
+                drawerLayout.openDrawer(Gravity.LEFT);
+            }
+        });*/
 
         bread = new Bread(this);
         bread_button.setOnClickListener(new View.OnClickListener() {
@@ -247,6 +294,29 @@ public class MainActivity extends AppCompatActivity implements TMapGpsManager.on
                 tMapView.setIconVisibility(true);
             }
         });
+
+        //하단바
+        /*bottom_q.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), QMain.class);
+                startActivity(intent);
+            }
+        });
+        bottom_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MapActivity.class);
+                startActivity(intent);
+            }
+        });
+        /*bottom_my.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Inquiry.class);
+                startActivity(intent);
+            }
+        });*/
     }
 
     @Override

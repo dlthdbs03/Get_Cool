@@ -26,6 +26,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".QMain"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".MapActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".Product"
+            android:exported="false" />
+        <activity
+            android:name=".AskCreatePage"
+            android:exported="false" />
+        <activity
+            android:name=".Etc"
+            android:exported="false" />
+        <activity
+            android:name=".Account"
+            android:exported="false" />
+        <activity
+            android:name=".Refund"
+            android:exported="false" />
+        <activity
+            android:name=".Inquiry"
+            android:exported="false" />
+
+
     </application>
 
 </manifest>
