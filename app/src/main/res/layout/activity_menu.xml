@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/bread"
+                android:layout_width="50dp"
+                android:layout_height="68dp"
+                android:src="@drawable/bread_img" />
+
+            <TextView
+                android:id="@+id/text_bread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/bread"
+                android:layout_centerHorizontal="true"
+                android:text="빵" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/grocery"
+                android:layout_width="50dp"
+                android:layout_height="68dp"
+                android:src="@drawable/grocery_img" />
+
+            <TextView
+                android:id="@+id/text_grocery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/grocery"
+                android:layout_centerHorizontal="true"
+                android:text="식료품" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/side"
+                android:layout_width="50dp"
+                android:layout_height="68dp"
+                android:src="@drawable/side_img" />
+
+            <TextView
+                android:id="@+id/text_side"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/side"
+                android:layout_centerHorizontal="true"
+                android:text="반찬" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/cafe"
+                android:layout_width="50dp"
+                android:layout_height="68dp"
+                android:src="@drawable/cafe_img" />
+
+            <TextView
+                android:id="@+id/text_cafe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cafe"
+                android:layout_centerHorizontal="true"
+                android:text="카페" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/morning"
+                android:layout_width="50dp"
+                android:layout_height="68dp"
+                android:src="@drawable/sun_img" />
+
+            <TextView
+                android:id="@+id/text_sun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/morning"
+                android:layout_centerHorizontal="true"
+                android:text="아침마감" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/korean"
+                android:layout_width="50dp"
+                android:layout_height="68dp"
+                android:src="@drawable/koreanfood_img" />
+
+            <TextView
+                android:id="@+id/text_korean"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/korean"
+                android:layout_centerHorizontal="true"
+                android:text="한식" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/japanese"
+                android:layout_width="50dp"
+                android:layout_height="68dp"
+                android:src="@drawable/japanesefood_img" />
+
+            <TextView
+                android:id="@+id/text_japanese"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/japanese"
+                android:layout_centerHorizontal="true"
+                android:text="일식" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/chinese"
+                android:layout_width="50dp"
+                android:layout_height="68dp"
+                android:src="@drawable/chinesefood_img" />
+
+            <TextView
+                android:id="@+id/text_chinese"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/chinese"
+                android:layout_centerHorizontal="true"
+                android:text="중식" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/western"
+                android:layout_width="50dp"
+                android:layout_height="68dp"
+                android:src="@drawable/steak_img" />
+
+            <TextView
+                android:id="@+id/text_western"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/western"
+                android:layout_centerHorizontal="true"
+                android:text="양식" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:id="@+id/evening"
+                android:layout_width="50dp"
+                android:layout_height="68dp"
+                android:src="@drawable/moon_img" />
+
+            <TextView
+                android:id="@+id/text_moon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/evening"
+                android:layout_centerHorizontal="true"
+                android:text="저녁마감" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</android.widget.LinearLayout>
