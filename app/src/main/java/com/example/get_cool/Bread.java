@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import com.skt.Tmap.TMapMarkerItem;
 import com.skt.Tmap.TMapPoint;
 
+
 import java.util.ArrayList;
 
 public class Bread {
@@ -45,7 +46,7 @@ public class Bread {
         return MarkerItems;
     }
 
-    private void setMarkerItems() {
+    public void setMarkerItems() {
         TMapPoint tMapPoint1 = new TMapPoint(37.298316, 127.045018); // 오이소
         bmarkerItem1.setTMapPoint(tMapPoint1);
         bmarkerItem1.setName("오이소"); // 마커의 타이틀 지정
@@ -141,6 +142,17 @@ public class Bread {
         bmarkerItem16.setName("자미당"); // 마커의 타이틀 지정
         setMarker(bmarkerItem16);
         MarkerItems.add(bmarkerItem16);
+
+        showBalloon();
+    }
+
+
+    private void showBalloon() {
+        for (int i = 0; i<MarkerItems.size(); i++) {
+            TMapMarkerItem selectedItem = MarkerItems.get(i);
+            selectedItem.setCanShowCallout(true);
+            selectedItem.setCalloutTitle(selectedItem.getName());
+        }
     }
 
     private void setMarker(TMapMarkerItem markerItem) {
@@ -151,6 +163,8 @@ public class Bread {
 
             markerItem.setIcon(bitmap);
             markerItem.setPosition(0.5f, 1.0f);
+
         }
     }
+
 }

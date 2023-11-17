@@ -113,6 +113,12 @@ public class Cafe {
         cmarkerItem13.setName("와이엇(WYATT)"); // 마커의 타이틀 지정
         setMarker(cmarkerItem13);
         MarkerItems.add(cmarkerItem13);
+
+        for (int i = 0; i<MarkerItems.size(); i++) {
+            TMapMarkerItem selectedItem = MarkerItems.get(i);
+            selectedItem.setCanShowCallout(true);
+            selectedItem.setCalloutTitle(selectedItem.getName());
+        }
     }
 
     private void setMarker(TMapMarkerItem markerItem) {

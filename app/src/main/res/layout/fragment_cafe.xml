@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.get_cool.Fragment_cafe"
-    android:background="#D8D8D8">
+    tools:context=".Fragment_cafe">
 
-    <TextView
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:text="cafe"/>
+
+        android:contentDescription="ViewPager for displaying content" />
 
 </FrameLayout>

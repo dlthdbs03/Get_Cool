@@ -20,34 +20,40 @@
             android:id="@+id/iv_menu"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/menu" />
-
-
-        <ImageView
-            android:id="@+id/iv_search"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="39dp"
-            android:layout_marginLeft="350dp"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="9dp"
             android:layout_marginBottom="11dp"
-            android:layout_toEndOf="@+id/logo"
-            app:srcCompat="@drawable/search" />
+            app:srcCompat="@drawable/menu" />
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="269dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
             android:layout_toEndOf="@+id/iv_menu"
-            tools:srcCompat="@drawable/logo" />
+            app:srcCompat="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="40dp"
+            android:layout_height="46dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="343dp"
+            android:layout_marginLeft="350dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="13dp"
+            app:srcCompat="@drawable/search" />
+
 
     </RelativeLayout>
 </androidx.appcompat.widget.Toolbar>

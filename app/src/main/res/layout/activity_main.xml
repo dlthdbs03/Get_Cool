@@ -1,13 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
-    android:id="@+id/drawer"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".QMain">
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/top_menu"
+                layout="@layout/toolbar" />
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/mainView"
+                android:layout_width="426dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/top_menu">
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="410dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="베이커리"
+                        android:textSize="30sp"
+                        tools:layout_editor_absoluteX="1dp"
+                        tools:layout_editor_absoluteY="78dp" />
+
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="제과류"
+                        android:textSize="30sp"
+                        tools:layout_editor_absoluteX="113dp"
+                        tools:layout_editor_absoluteY="142dp" />
+
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="카페"
+                        android:textSize="30sp"
+                        tools:layout_editor_absoluteX="149dp"
+                        tools:layout_editor_absoluteY="62dp" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <FrameLayout
+                android:id="@+id/frame"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:layout_marginTop="8dp"
+                android:background="#FFFFFF"
+                app:layout_constraintTop_toBottomOf="@+id/mainView"
+                tools:layout_editor_absoluteX="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </RelativeLayout>
+            </FrameLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/ad"
+                android:layout_width="476dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="484dp"
+                android:background="#D8D8D8"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.292"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mainView"
+                app:layout_constraintVertical_bias="0.538">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/add_img"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="188dp"
+                        android:layout_marginTop="16dp"
+                        android:text="오이소 현재 할인 중!"
+                        android:textSize="25dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            layout="@layout/bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true" />
+
+
+    </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation"
@@ -16,87 +148,5 @@
         android:layout_gravity="start|left"
         app:headerLayout="@layout/header"
         app:menu="@menu/menu_main" />
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/toolbar1">
-
-
-        <include
-            android:id="@+id/top_menu"
-            layout="@layout/toolbar" />
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="410dp"
-            android:layout_height="60dp"
-            android:layout_below="@+id/top_menu"
-            android:layout_marginTop="0dp">
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="베이커리"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="115dp" />
-
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="제과류"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="113dp"
-                tools:layout_editor_absoluteY="142dp" />
-
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="카페"
-                android:textSize="30sp"
-                tools:layout_editor_absoluteX="149dp"
-                tools:layout_editor_absoluteY="62dp" />
-        </com.google.android.material.tabs.TabLayout>
-
-        <FrameLayout
-            android:id="@+id/frame"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="0dp"
-            android:layout_below="@+id/tabs"
-            android:background="#D8D8D8"
-            app:layout_constraintTop_toBottomOf="@+id/mainView"
-            tools:layout_editor_absoluteX="1dp" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/ad"
-            android:layout_width="426dp"
-            android:layout_height="147dp"
-            android:layout_below="@+id/frame"
-            android:layout_marginTop="50dp"
-            android:background="#D8D8D8"
-            >
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <include
-            layout="@layout/bottom_menu"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_alignParentBottom="true"/>
-
-
-    </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

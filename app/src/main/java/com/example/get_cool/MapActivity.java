@@ -1,50 +1,56 @@
 package com.example.get_cool;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.PointF;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.Manifest;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.skt.Tmap.TMapGpsManager;
 import com.skt.Tmap.TMapMarkerItem;
+import com.skt.Tmap.TMapPoint;
 import com.skt.Tmap.TMapView;
+import com.skt.Tmap.poi_item.TMapPOIItem;
 
 import java.util.ArrayList;
 
 
 public class MapActivity extends AppCompatActivity implements TMapGpsManager.onLocationChangedCallback {
-    private static final String TAG = "Main_Activity";
+    private static final String TAG = "MapActivity";
     private static final int YOUR_REQUEST_CODE = 1;
+    private static final int YOUR_GPS_ENABLE_REQUEST_CODE = 2;
+
     private TMapView tMapView;
     private LinearLayout linearLayoutTmap;
     private TMapGpsManager tmapgps = null;
-    private View view;
-    private boolean TrackingMode = true;
-
-    private DrawerLayout drawerLayout; //메뉴
-    private Toolbar toolbar; //상단바
-    private ImageView ivMenu; //좌측메뉴
-    private ImageView ivSearch; //검색
-    //하단바
-    private TextView bottom_q;
-    private ImageView bottom_map;
-    private TextView bottom_my;
 
     Bread bread;
     Grocery grocery;
@@ -77,14 +83,7 @@ public class MapActivity extends AppCompatActivity implements TMapGpsManager.onL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
 
-        // 검색
-        ivSearch = findViewById(R.id.iv_search);
-        //메뉴
-        ivMenu=findViewById(R.id.iv_menu);
 
-        toolbar=findViewById(R.id.toolbar);
-
-        //LinearLayout linearLayoutmenu = findViewById(R.id.menu);
         bread_button = findViewById(R.id.bread);
         grocery_button = findViewById(R.id.grocery);
         side_button = findViewById(R.id.side);
@@ -99,60 +98,17 @@ public class MapActivity extends AppCompatActivity implements TMapGpsManager.onL
         buttonZoomOut = findViewById(R.id.buttonZoomOut);
         buttoncurrent = findViewById(R.id.currentState);
 
-
-        linearLayoutTmap = findViewById(R.id.Tmap); // findViewById를 통해 linearLayoutTmap을 초기화합니다.
-        tMapView = new TMapView(this);
-        tMapView.setHttpsMode(true);
-
-        tMapView.setSKTMapApiKey("kK62alKkLU8hRRtWeX7Uj5jpjWGbYZPVZAeSCCOi");
-        linearLayoutTmap.addView(tMapView);
-
-
-        /* 현재 보는 방향으로 설정 */
-        tMapView.setCompassMode(true);
-        /* 현 위치 아이콘 설정 */
-        tMapView.setIconVisibility(true);
-
-        tMapView.setZoomLevel(15);
-        tMapView.setMapType(TMapView.MAPTYPE_STANDARD);
-        tMapView.setLanguage(TMapView.LANGUAGE_KOREAN);
-
         // 위치 권한을 체크하고 요청하는 코드
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION }, YOUR_REQUEST_CODE);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, YOUR_REQUEST_CODE);
         }
 
-        tmapgps = new TMapGpsManager(MapActivity.this);
-        tmapgps.setMinTime(1000);
-        tmapgps.setMinDistance(5);
-        tmapgps.setProvider(tmapgps.NETWORK_PROVIDER);
-        //tmapgps.OpenGps();
+        // GPS 상태 확인 및 사용자에게 활성화 요청
+        checkAndRequestGps();
 
-        tMapView.setSightVisible(true);
+        // TMapView 설정
+        setupTMapView();
 
-        //하단바
-        bottom_q=findViewById(R.id.bt_q);
-        bottom_map=findViewById(R.id.bt_map);
-        bottom_my=findViewById(R.id.bt_my);
-
-        //문의 작성 페이지
-        /*ivSearch.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AskCreatePage.class);
-                startActivity(intent);
-            }
-        });
-
-        //메뉴
-        ivMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: 클릭됨");
-                drawerLayout.openDrawer(Gravity.LEFT);
-            }
-        });*/
 
         bread = new Bread(this);
         bread_button.setOnClickListener(new View.OnClickListener() {
@@ -161,15 +117,12 @@ public class MapActivity extends AppCompatActivity implements TMapGpsManager.onL
                 ArrayList<TMapMarkerItem> breadMarkerItems = bread.getMarkerItems();
                 tMapView.removeAllMarkerItem();
 
-                tMapView.setTrackingMode(false);
-                tMapView.setZoomLevel(14);
+                tMapView.setZoomLevel(15);
 
                 for(int i = 0; i<breadMarkerItems.size(); i++){
                     tMapView.addMarkerItem("bmarkerItem"+i, breadMarkerItems.get(i));
                 }
-
-                tMapView.setCenterPoint(127.035805, 37.300655);
-                tMapView.setIconVisibility(false);
+                tMapView.setTrackingMode(true);
             }
         });
 
@@ -200,14 +153,11 @@ public class MapActivity extends AppCompatActivity implements TMapGpsManager.onL
                 ArrayList<TMapMarkerItem> cafeMarkerItems = cafe.getMarkerItems();
                 tMapView.removeAllMarkerItem();
 
-                tMapView.setTrackingMode(false);
-                tMapView.setZoomLevel(14);
+                tMapView.setZoomLevel(15);
 
                 for(int i = 0; i<cafeMarkerItems.size(); i++)
                     tMapView.addMarkerItem("cmarkerItem"+i, cafeMarkerItems.get(i));
-
-                tMapView.setCenterPoint(127.035805, 37.300655);
-                tMapView.setIconVisibility(false);
+                tMapView.setTrackingMode(true);
             }
         });
 
@@ -288,49 +238,91 @@ public class MapActivity extends AppCompatActivity implements TMapGpsManager.onL
         buttoncurrent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tMapView.removeAllMarkerItem();
                 setCurrentPosition();
                 tMapView.setZoomLevel(15);
-                tMapView.setTrackingMode(true);
                 tMapView.setIconVisibility(true);
             }
         });
 
-        //하단바
-        /*bottom_q.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), QMain.class);
-                startActivity(intent);
-            }
-        });
-        bottom_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MapActivity.class);
-                startActivity(intent);
-            }
-        });
-        /*bottom_my.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Inquiry.class);
-                startActivity(intent);
-            }
-        });*/
+    }
+
+
+    private void checkAndRequestGps() {
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if (lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            // GPS가 활성화되어 있는 경우
+            // 위치 업데이트 관련 코드 작성
+        } else {
+            // GPS가 비활성화되어 있는 경우, 사용자에게 GPS를 활성화하도록 요청
+            showEnableGpsDialog();
+        }
+    }
+
+    private void showEnableGpsDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("GPS가 비활성화되어 있습니다. GPS를 활성화하시겠습니까?")
+                .setCancelable(false)
+                .setPositiveButton("활성화", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // GPS 설정 화면으로 이동
+                        Intent gpsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivityForResult(gpsIntent, YOUR_GPS_ENABLE_REQUEST_CODE);
+                    }
+                })
+                .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void setupTMapView() {
+        linearLayoutTmap = findViewById(R.id.Tmap);
+        tMapView = new TMapView(this);
+        tMapView.setHttpsMode(true);
+
+        tMapView.setSKTMapApiKey("kK62alKkLU8hRRtWeX7Uj5jpjWGbYZPVZAeSCCOi");
+        linearLayoutTmap.addView(tMapView);
+
+        tMapView.setIconVisibility(true);
+
+        tMapView.setZoomLevel(15);
+        tMapView.setMapType(TMapView.MAPTYPE_STANDARD);
+        tMapView.setLanguage(TMapView.LANGUAGE_KOREAN);
+
+        tmapgps = new TMapGpsManager(MapActivity.this);
+        tmapgps.setMinTime(1000);
+        tmapgps.setMinDistance(5);
+        tmapgps.setProvider(tmapgps.NETWORK_PROVIDER);
+        tmapgps.OpenGps();
+
+        tMapView.setTrackingMode(true);
+
+        setCurrentPosition();
+
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // 위치 업데이트 리스너 해제
+        if (tmapgps != null) {
+            tmapgps.CloseGps();
+        }
     }
 
     @Override
     public void onLocationChange(Location location) {
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-
-        location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-        tMapView.setCenterPoint(location.getLongitude(), location.getLatitude());
+        // 위치가 변경될 때 실행할 코드 작성
+        // 여기에 원하는 작업을 추가하세요.
+        Log.d(TAG, "Location changed: " + location.getLatitude() + ", " + location.getLongitude());
+        // 예: 지도 이동, 마커 추가 등
     }
 
     private void setCurrentPosition() {
@@ -342,7 +334,22 @@ public class MapActivity extends AppCompatActivity implements TMapGpsManager.onL
         }
 
         Location location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        if (location != null) {
+            tMapView.setLocationPoint(location.getLongitude(), location.getLatitude());
+        } else {
+            // 위치를 가져올 수 없는 경우에 대한 처리
+            Log.e(TAG, "Unable to get current location");
+            // 여기에 위치를 가져올 수 없는 경우에 대한 메시지 또는 작업을 추가하세요.
+        }
+    }
 
-        tMapView.setCenterPoint(location.getLongitude(), location.getLatitude());
+    // onActivityResult 메서드에서 GPS 활성화 후의 작업을 처리할 수 있습니다.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == YOUR_GPS_ENABLE_REQUEST_CODE) {
+            // GPS가 사용자에 의해 활성화되었는지 확인
+            checkAndRequestGps();
+        }
     }
 }

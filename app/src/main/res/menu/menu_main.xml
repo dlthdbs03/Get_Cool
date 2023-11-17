@@ -2,19 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_person"
-        android:title="Inquiry"
-        android:icon="@drawable/menu"
+        android:id="@+id/menu_home"
+        android:title="Home"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/menu_android"
+        android:id="@+id/menu_mypage"
         android:title="MyPage"
-        android:icon="@drawable/menu"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/menu_bookmark"
-        android:title="Review"
-        android:icon="@drawable/menu"
+        android:id="@+id/menu_map"
+        android:title="Map"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/menu_inquiry"
+        android:title="Inquiry"
         app:showAsAction="always"/>
 
 </menu>

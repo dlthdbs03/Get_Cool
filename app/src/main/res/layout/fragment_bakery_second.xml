@@ -1,44 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".BakerySecondFragment">
+    tools:context=".Fragment_bakery_second"
 
-    <!-- 베이커리 가게 추천 상세 페이지, 두번째 화면 xml 파일  -->
+    android:layout_width="290dp"
+    android:layout_height="450dp"
+
+    android:layout_marginLeft="60dp"
+    android:layout_marginRight="60dp"
+    android:layout_marginTop="30dp"
+    android:layout_marginBottom="30dp" >
+
+    <LinearLayout
+        android:layout_width="290dp"
+        android:layout_height="450dp"
+
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+
+        android:background="@drawable/layout_box"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/editTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@null"
+            android:text="EditText"
+            android:textSize="30sp" />
 
 
+        <TextView
+            android:id="@+id/editContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="25dp"
+            android:background="@null"
+            android:text="EditText"
+            android:textColor="#605C5C"
+            android:textSize="18sp" />
 
-    <!-- 가게 이름 들어갈 곳  -->
-    <EditText
-        android:id="@+id/editTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textSize="30sp"
-        android:text="EditText" />
+        <ImageView
+            android:id="@+id/ImageView"
+            android:layout_width="290dp"
+            android:layout_height="230dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bakery_img2" />
 
-    <!-- 가게 상세 설명 들어갈 곳  -->
-    <EditText
-        android:id="@+id/editContent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:layout_marginTop="65dp"
-        android:layout_marginRight="250dp"
-        android:text="EditText"
+        <LinearLayout
+            android:layout_width="110dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/sale_box">
 
-        android:minWidth="48dp"
-        android:minHeight="48dp" />
+            <TextView
+                android:id="@+id/sale_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="0dp"
+                android:background="@null"
+                android:text="마감세일 20:00"
+                android:textSize="12sp"
+                android:textColor="#FF0000" />
 
+        </LinearLayout>
 
-    <!-- 가게 대표 이미지  -->
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="150dp"
-        android:paddingTop="0dp"
-        android:src="@drawable/bakery_img1" />
+        <TextView
+            android:id="@+id/price_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@null"
+            android:text="1500₩ 부터"
+            android:textColor="#0C0C0C"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 
 </FrameLayout>

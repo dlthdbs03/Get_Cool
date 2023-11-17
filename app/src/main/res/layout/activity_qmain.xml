@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout
-    android:id="@+id/drawer"
+    android:id="@+id/drawer_qmain"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,73 +9,74 @@
     android:orientation="vertical"
     tools:context=".QMain">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start|left"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/menu_main" />
-
-
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/toolbar1">
-        <include  layout="@layout/toolbar"/>
+        <include  layout="@layout/q_toolbar"/>
 
 
         <android.widget.Button
             android:id="@+id/btn1"
-            android:layout_below="@+id/toolbar1"
-            android:textColor="@color/black"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar1"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="80dp"
             android:background="@drawable/btn_style"
+            android:onClick="clickHandler"
             android:text="이용문의"
-            android:textStyle="bold"
-            />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
         <android.widget.Button
             android:id="@+id/btn2"
-            android:layout_toRightOf="@+id/btn1"
-            android:layout_alignTop="@+id/btn1"
-            android:textColor="@color/black"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btn1"
             android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@+id/btn1"
             android:background="@drawable/btn_style"
+            android:onClick="clickHandler"
             android:text="환불"
-            android:textStyle="bold"
-            />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
         <android.widget.Button
             android:id="@+id/btn3"
-            android:layout_below="@+id/btn1"
-            android:textColor="@color/black"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/btn1"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/btn_style"
+            android:onClick="clickHandler"
             android:text="계정"
-            android:textStyle="bold"
-            />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <android.widget.Button
             android:id="@+id/btn4"
-            android:layout_toRightOf="@+id/btn3"
-            android:layout_alignTop="@+id/btn3"
-            android:textColor="@color/black"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btn3"
             android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@+id/btn3"
             android:background="@drawable/btn_style"
+            android:onClick="clickHandler"
             android:text="기타"
-            android:textStyle="bold"
-            />
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottom_menu"
+            android:layout_below="@+id/btn4"
+            android:onClick="clickHandler" />
 
         <include
             layout="@layout/bottom_menu"
@@ -86,9 +87,13 @@
 
     </RelativeLayout>
 
-
-
-
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|left"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/menu_main" />
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

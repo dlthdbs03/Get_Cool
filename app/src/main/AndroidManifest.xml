@@ -6,14 +6,18 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
+    <!--파일 쓰기 권한-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Get_Cool"
         tools:targetApi="31">
@@ -41,17 +45,87 @@
             android:name=".AskCreatePage"
             android:exported="false" />
         <activity
-            android:name=".Etc"
+            android:name=".OrderPageActivity"
             android:exported="false" />
         <activity
-            android:name=".Account"
+            android:name=".PointPageActivity"
             android:exported="false" />
         <activity
-            android:name=".Refund"
+            android:name=".CouponPageActivity"
             android:exported="false" />
         <activity
-            android:name=".Inquiry"
+            android:name=".NoticePageActivity"
             android:exported="false" />
+        <activity
+            android:name=".AskPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ModifyPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Productlist"
+            android:exported="false" />
+        <activity
+            android:name=".CompletePayment"
+            android:exported="false" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:label="로그인 화면"
+            android:exported="true">
+            <!-- 다른 설정 및 인텐트 필터 추가 -->
+        </activity>
+
+
+        <!-- 두 번째 액티비티: SignupActivity -->
+        <activity
+            android:name=".SignupActivity"
+            android:label="회원 가입 화면">
+            <!-- 다른 설정 추가 -->
+        </activity>
+
+        <!-- 세 번째 액티비티: VerifyIdentityActivity -->
+        <activity
+            android:name=".VerifyIdentityActivity"
+            android:label="본인인증 화면">
+            <!-- 다른 설정 추가 -->
+        </activity>
+
+        <!-- 네 번째 액티비티: PaymentActivity -->
+        <activity
+            android:name=".PaymentActivity"
+            android:label="@string/app_name"
+            android:exported="true"> <!-- android:exported 속성 추가 -->
+
+            <!-- 해당 액티비티의 인텐트 필터 정의 등 -->
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 다섯 번째 액티비티 BusinessVerificationActivity-->
+        <activity
+            android:name=".BusinessVerificationActivity"
+            android:label="사업자 인증">
+        </activity>
+
+        <!-- 여섯 번째 액티비티 MainBusinessActivity-->
+        <activity
+            android:name=".MainBusinessActivity"
+            android:label="사업자 메인페이지">
+        </activity>
+
+        <!-- 여섯 번째 액티비티 InventoryAddActivity-->
+        <activity
+            android:name=".InventoryAddActivity"
+            android:label="재고 추가 페이지">
+        </activity>
+        <!-- 다른 액티비티들을 필요에 따라 추가 -->
 
 
     </application>

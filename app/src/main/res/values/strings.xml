@@ -1,3 +1,12 @@
 <resources>
+    <!-- 쿠폰 아이템 배열 리소스 추가 -->
+    <string-array name="coupon_items">
+        <item>선택 안함</item>
+        <item>10% 할인 쿠폰</item>
+        <item>20% 할인 쿠폰</item>
+        <item>5,000원 할인 쿠폰</item>
+        <item>무료 배송 쿠폰</item>
+    </string-array>
+
     <string name="app_name">Get_Cool</string>
 </resources>

@@ -1,26 +1,29 @@
 package com.example.get_cool;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;   // 추가한 것
+import android.os.Looper;    // 추가한 것
 
-
-
-// 베이커리 가게 소개 페이지들을 수용(?)하는 Fragment (정리는 덜 되어있지만 코드상 오류는 없음)
 
 public class Fragment_bakery extends Fragment {
 
     private ViewPager vpPager;
     private MyPagerAdapter adapterViewPager;
+
+    private Handler handler;        // 추가한 것
+    private int currentItem = 0;       // 추가한 것
+    private static final int NUM_ITEMS = 3;         // 추가한 것
+    private static final long AUTO_SWIPE_DELAY = 8000; // 추가한 것 (8 seconds 후 넘어가도록 함)
+
 
     public Fragment_bakery() {
         // Required empty public constructor
@@ -35,12 +38,25 @@ public class Fragment_bakery extends Fragment {
         adapterViewPager = new MyPagerAdapter(getChildFragmentManager()); // getSupportFragmentManager() 대신 getChildFragmentManager() 사용
         vpPager.setAdapter(adapterViewPager);
 
+        handler = new Handler(Looper.getMainLooper());    // 추가한 것
+        startAutoSwipe();           // 추가한 것
+
         return view;
+    }
+
+    private void startAutoSwipe() {              // 추가한 것
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                currentItem = (currentItem + 1) % NUM_ITEMS;
+                vpPager.setCurrentItem(currentItem, true);
+                startAutoSwipe();
+            }
+        }, AUTO_SWIPE_DELAY);
     }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
         private static int NUM_ITEMS = 3;
-
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
         }
@@ -51,16 +67,16 @@ public class Fragment_bakery extends Fragment {
             return NUM_ITEMS;
         }
 
-        // 여기에 쓰여진 가게 설명은 각 상세 페이지 화면의 EditText에 기입됨
+        // Returns the fragment to display for that page
         @Override
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return BakeryFirstFragment.newInstance("오이소", "정통 프렌치 스타일 프라이엄 베이커리 브랜드");
+                    return Fragment_bakery_first.newInstance("오이소", "정통 프렌치 스타일 프라이엄 베이커리 브랜드");
                 case 1:
-                    return BakerySecondFragment.newInstance("루아즈 블랑제리", "원하는 페이지 설명");
+                    return Fragment_bakery_second.newInstance("행복한찹쌀꽈배기", "당일반죽! 당일 소진!");
                 case 2:
-                    return BakeryThirdFragment.newInstance("르디투어 광교", "원하는 페이지 설명");
+                    return Fragment_bakery_third.newInstance("막걸리 술빵&도너츠", "25년의 추억을 담아 만들었습니다.");
                 default:
                     return null;
             }

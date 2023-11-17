@@ -3,16 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    tools:context="com.example.get_cool.Fragment_bakery"
-    android:background="#D8D8D8">
-
+    tools:context=".Fragment_bakery">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vpPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:contentDescription="ViewPager for displaying content"/>
+        android:layout_height="match_parent"
+
+        android:contentDescription="ViewPager for displaying content" />
 
 </FrameLayout>
