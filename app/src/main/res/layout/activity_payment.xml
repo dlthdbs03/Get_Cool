@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 돌아가기 버튼 -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="32dp"
+        android:layout_height="54dp"
+        android:layout_gravity="start"
+        android:background="@android:color/transparent"
+        android:contentDescription="Go back"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_back_arrow" />
+
+    <!-- 결제하기 제목 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="결제하기"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="-50dp" />
+
+    <!-- 총액 표시 -->
+    <TextView
+        android:id="@+id/totalPayment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="총액 : "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="0dp" />
+
+
+    <!-- 요청사항 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="요청사항"
+        android:layout_marginTop="16dp" />
+    <EditText
+        android:id="@+id/requestEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="요청사항을 작성해주세요"
+        android:imeOptions="actionDone"
+        android:maxLength="30"
+        />
+
+
+    <!-- 할인쿠폰 드롭박스 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="할인쿠폰"
+        android:layout_marginTop="16dp" />
+    <Spinner
+        android:id="@+id/couponSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </Spinner>
+
+    <!-- 포인트 사용 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="포인트 사용"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/availablePointsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="보유 포인트: "
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <EditText
+                android:id="@+id/pointsEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="사용할 포인트를 입력하세요"
+                android:inputType="number"
+                android:clickable="true"
+                android:enabled="true"
+                android:imeOptions="actionDone"
+                android:maxLines="1" />
+
+
+            <Button
+                android:id="@+id/useAllPointsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="전체 사용"
+                android:enabled="true" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!-- 결제수단 드롭박스 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="결제수단"
+        android:layout_marginTop="16dp" />
+    <Spinner
+        android:id="@+id/paymentMethodSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <!-- 결제하기 버튼 -->
+    <Button
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="결제하기"
+        android:layout_marginTop="16dp" />
+
+</LinearLayout>

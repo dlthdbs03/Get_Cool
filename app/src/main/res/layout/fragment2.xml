@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/text1"
+            android:background="@drawable/text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="\nQ. 환불은 가능한가요?\n\nA. 빠른 시간에 처리해야 되는 재고물품\n 특성상 구매 후 취소가 어렵습니다.\n"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:background="@drawable/text_style"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text1"
+            android:gravity="center"
+            android:text="\nQ. 주문 접수가 취소되었습니다.\n결제가 된 건가요?\n\nA. 주문 접수와 동시에 결제되는 것이므로\n 접수가 취소됐을 경우, 결제는 진행되지 않습니다. \n"
+            android:textSize="19dp"
+            android:layout_marginBottom="10dp"/>
+
+    </RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

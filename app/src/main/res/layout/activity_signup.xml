@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- 로고 이미지 -->
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:scaleType="centerCrop"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:contentDescription="App Logo" />
+
+    <!-- 이름 입력란 (처음에는 안 보이도록 설정) -->
+    <EditText
+        android:id="@+id/editTextFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="이름"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/imageViewLogo"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_background" />
+    <!-- 아이디 입력란 -->
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="아이디"
+        android:layout_below="@+id/editTextFullName"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_background" />
+
+    <!-- 중복확인 버튼 -->
+    <Button
+        android:id="@+id/buttonCheckDuplicate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="중복확인"
+        android:layout_alignTop="@+id/editTextUsername"
+        android:layout_alignBottom="@+id/editTextUsername"
+        android:layout_alignEnd="@+id/editTextUsername"
+        android:layout_marginEnd="8dp"
+        android:visibility="visible" />
+
+    <!-- 아이디 규격 메시지 표시할 TextView -->
+    <TextView
+        android:id="@+id/textViewIdMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonCheckDuplicate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:text=""
+        android:textColor="#FF0000" />
+
+
+    <!-- 비밀번호 입력란 -->
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호"
+        android:layout_below="@+id/buttonCheckDuplicate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:inputType="textPassword"
+        android:background="@drawable/edittext_background" />
+
+
+    <!-- 비밀번호 확인 입력란 -->
+    <EditText
+        android:id="@+id/editTextConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호 확인"
+        android:layout_below="@+id/editTextPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:inputType="textPassword"
+        android:background="@drawable/edittext_background" />
+    <TextView
+        android:id="@+id/textViewPasswordMatch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextConfirmPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="4dp"
+        android:text=""
+        android:textColor="@color/red" />
+
+    <!-- 본인인증 버튼 ( 완료 후 활성화) -->
+    <Button
+        android:id="@+id/buttonVerifyIdentity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="본인인증"
+        android:layout_below="@+id/editTextConfirmPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:enabled="false"
+        android:background="@drawable/edittext_background" />
+
+</RelativeLayout>

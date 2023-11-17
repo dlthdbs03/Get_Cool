@@ -1,0 +1,6 @@
+<!-- res/drawable/button_background.xml -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="4dp" />
+    <solid android:color="#009E47" /> <!-- 버튼 배경 색상을 원하는 색으로 변경하세요 -->
+</shape>

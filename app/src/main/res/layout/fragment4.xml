@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/text1"
+            android:background="@drawable/text_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="\nQ. 세금계산서 및 현금영수증도 \n발급 가능한가요?\n\n
+A. 발행 가능하며, 필수 발행으로 진행됩니다.\n\n"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:background="@drawable/text_style"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text1"
+            android:gravity="center"
+            android:text="\nQ. 보관방법및 유통기한은 어떻게 되나요?\n\n
+A. 직사광선을 피해 온도가 심하지 않는 서늘한\n 곳에 보관 및 냉장 보관하여도 됩니다. 당일제조한 \n상품이지만 최대한 빨리 드시는 것이 좋습니다.\n\n"
+            android:textSize="19dp"
+            android:layout_marginBottom="10dp"
+            />
+
+    </RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

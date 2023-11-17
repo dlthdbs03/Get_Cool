@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="218dp"
+            android:background="@drawable/text_style"
+            android:gravity="center"
+            android:text="\nQ. 픽업시간을 못 맞출 것 같아요.\n\nA. 픽업 시간을 못 맞출 경우, 점포에서 주문을 취소\n할 수 있습니다. 이때 환불은 어려우니 최대한 픽업 \n시간을 여유있게 맞춰 주시길 바랍니다. 또한 점포 \n사정에 따라 픽업 시간에 여유를 둘 수도 있으니 점\n포에 문의를 하시길 바랍니다.\n\n"
+            android:textSize="17dp" />
+
+        <TextView
+            android:id="@+id/text2"
+            android:layout_width="match_parent"
+            android:background="@drawable/text_style"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text1"
+            android:gravity="center"
+            android:text="\nQ. 픽업 시간이 지나도 제품을 받지 못했어요.\n\nA. 늦은 제품 제공 혹은 불량 제품 제공을 한 점포에 \n대해 벌점을 부과하고 있습니다. 점포 신고는 점포신\n고 탭에서 하실 수 있습니다.\n\n"
+            android:textSize="17dp"
+            android:layout_marginBottom="10dp"/>
+    </RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

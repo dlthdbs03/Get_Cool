@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!--"본인인증" 텍스트 -->
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="본인인증"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+    <!-- 이름 입력란 -->
+    <EditText
+        android:id="@+id/editTextFullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="이름"
+        android:visibility="visible"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textViewTitle"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_background"/>
+
+    <!-- 통신사 선택 (체크박스) -->
+    <CheckBox
+        android:id="@+id/checkBoxUplus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LG U+"
+        android:layout_below="@+id/editTextFullName"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:buttonTint="@color/black" />
+
+    <CheckBox
+        android:id="@+id/checkBoxKT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KT"
+        android:layout_below="@+id/editTextFullName"
+        android:layout_toEndOf="@+id/checkBoxUplus"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:buttonTint="@color/black" />
+
+    <CheckBox
+        android:id="@+id/checkBoxSKT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SKT"
+        android:layout_below="@+id/editTextFullName"
+        android:layout_toEndOf="@+id/checkBoxKT"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:buttonTint="@color/black" />
+
+    <!-- 전화번호 입력란 -->
+    <EditText
+        android:id="@+id/editTextPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="전화번호"
+        android:layout_below="@+id/checkBoxUplus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:inputType="phone"
+        android:background="@drawable/edittext_background" />
+
+    <!-- 본인인증 버튼 -->
+    <Button
+        android:id="@+id/buttonVerifyIdentity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="인증하기"
+        android:layout_below="@+id/editTextPhoneNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_background"
+        />
+
+    <!-- 인증번호 입력란 (초기에는 보이지 않음) -->
+    <EditText
+        android:id="@+id/editTextVerificationCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="인증번호"
+        android:layout_below="@+id/buttonVerifyIdentity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:inputType="number"
+        android:visibility="gone"
+        android:background="@drawable/edittext_background" />
+
+    <!-- 확인 버튼 (초기에는 보이지 않음) -->
+    <Button
+        android:id="@+id/buttonVerifyCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:layout_below="@+id/editTextVerificationCode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:background="@drawable/edittext_background" />
+
+    <!-- 타이머 (초기에는 보이지 않음) -->
+    <TextView
+        android:id="@+id/textViewTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3:00"
+        android:layout_below="@+id/buttonVerifyCode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" /> <!-- 여기에 마진 수정 -->
+</RelativeLayout>

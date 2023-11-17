@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 클릭 시 색상 -->
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#FFFFFF" />
+            <font color="#61FF00" />
+        </shape>
+    </item>
+
+    <!-- 기본 색상 (검정색) -->
+    <item>
+        <shape>
+            <solid android:color="#FFFFFF" />
+            <font color="#000000" />
+        </shape>
+    </item>
+
+</selector>
